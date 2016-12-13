@@ -55,7 +55,9 @@ set confirm
 " "press <Enter> to continue"
 set cmdheight=2
 
-colorscheme quantum
+if &t_Co > 255
+  colorscheme quantum
+endif
 
 " Use <F2> to toggle between 'paste' and 'nopaste'
 set pastetoggle=<F2>
