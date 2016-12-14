@@ -81,6 +81,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
     Key([mod], "f", lazy.spawn("firefox")),
+    Key([mod], "l", lazy.spawn("xlock")),
 ]
 
 groups = [Group(i) for i in ['dev', 'browse', 'pg', 'chat']]
