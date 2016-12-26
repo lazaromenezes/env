@@ -32,59 +32,64 @@ mod = "mod4"
 
 keys = [
     # Switch between windows in current stack pane
-    Key(
-        [mod], "k",
-        lazy.layout.down()
-    ),
-    Key(
-        [mod], "j",
-        lazy.layout.up()
-    ),
+    Key([mod], "k", lazy.layout.down()),
+    Key([mod], "j", lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key(
-        [mod, "control"], "k",
-        lazy.layout.shuffle_down()
-    ),
-    Key(
-        [mod, "control"], "j",
-        lazy.layout.shuffle_up()
-    ),
+    Key([mod, "control"], "k", lazy.layout.shuffle_down()),
+    Key([mod, "control"], "j", lazy.layout.shuffle_up()),
 
     # Switch window focus to other pane(s) of stack
-    Key(
-        [mod], "space",
-        lazy.layout.next()
-    ),
+    Key([mod], "space", lazy.layout.next()),
 
     # Swap panes of split stack
-    Key(
-        [mod, "shift"], "space",
-        lazy.layout.rotate()
-    ),
+    Key([mod, "shift"], "space", lazy.layout.rotate()),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key(
-        [mod, "shift"], "Return",
-        lazy.layout.toggle_split()
-    ),
-    Key([mod], "Return", lazy.spawn("xterm")),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod], "F4", lazy.window.kill()),
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+
+    # Program spawn key bindings
+    Key([mod], "Return", lazy.spawn("xterm")),
     Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "l", lazy.spawn("xlock")),
 ]
 
-groups = [Group(i) for i in ['dev', 'browse', 'pg', 'chat']]
+music_group = Group('music',
+                     init = False,
+                     persist = False,
+                     matches = [Match(wm_class=['spotify', 'Spotify'])],
+                     spawn = ['xterm -e alsamixer'],
+                     layout = 'stack',
+                     exclusive = True
+              )
+
+work_group = Group('work',
+                    matches = [Match(wm_class=['vmware-view', 'Vmware-view'])],
+                    layout = 'max',
+                    exclusive = True
+              )
+
+browse_group = Group('browse', 
+                     matches = [Match(wm_class=['navigator', 'Firefox'])],
+                     layout = 'max'
+              )
+
+groups = [Group(i) for i in ['dev', 'browse', 'chat']]
+        
+groups.append(music_group)
+groups.append(work_group)
+groups.append(browse_group)
 
 for i in groups:
     # mod1 + letter of group = switch to group
@@ -104,7 +109,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Arial',
+    font='DejaVu Sans Mono',
     fontsize=16,
     padding=3,
 )
@@ -136,7 +141,6 @@ screens = [
                 widget.Sep(),
                 widget.WindowName(),
                 widget.Sep(),
-                widget.Systray(),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
             ],
             32,
