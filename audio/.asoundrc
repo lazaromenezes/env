@@ -1,8 +1,21 @@
+pcm.dmixer {
+  type dmix
+  ipc_key 1001
+  slave {
+    pcm {
+      type hw
+      card LX3000
+      device 0
+    }
+    buffer_size 4096
+  }
+}
+
 pcm.!default {  
   type plug 
   slave {
-    pcm "dmix"
-  }
+    pcm 'plug:dmixer'
+  }  
 }
 
 ctl.!default {
