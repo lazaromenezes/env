@@ -62,7 +62,7 @@ keys = [
     # Program spawn key bindings
     Key([mod], "Return", lazy.spawn("xterm")),
     Key([mod], "f", lazy.spawn("firefox")),
-    Key([mod], "l", lazy.spawn("xlock")),
+    Key([mod], "l", lazy.spawn("xlock -mode nose -program fortune")),
 ]
 
 music_group = Group('music',
