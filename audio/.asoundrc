@@ -1,4 +1,4 @@
-pcm.dmixer {
+pcm.mslx_playback {
   type dmix
   ipc_key 1001
   slave {
@@ -11,10 +11,28 @@ pcm.dmixer {
   }
 }
 
+pcm.mslx_capture {
+  type dsnoop
+  ipc_key 1002
+  slave {
+    pcm {
+      type hw
+      card LX3000
+      device 0
+    }
+  }
+}
+
+pcm.asymed {
+  type asym
+  playback.pcm "mslx_playback"
+  capture.pcm "mslx_capture"
+}
+
 pcm.!default {  
   type plug 
   slave {
-    pcm 'plug:dmixer'
+    pcm 'plug:asymed'
   }  
 }
 
