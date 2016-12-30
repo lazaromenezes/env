@@ -35,5 +35,8 @@ fi
 # Wireless keyboard workaround
 setxkbmap -layout br -variant abnt2
 
+# Setup wallapper
+sh $HOME/.fehbg &
+
 # Starts qtile
-exec qtile --log-level INFO
+exec qtile --log-level INFO 
