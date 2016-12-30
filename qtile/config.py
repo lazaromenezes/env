@@ -26,7 +26,9 @@
 
 from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
-from libqtile import layout, bar, widget
+from libqtile import layout, bar, widget, hook
+
+import os, subprocess
 
 mod = "mod4"
 
@@ -63,31 +65,24 @@ keys = [
     Key([mod], "Return", lazy.spawn("xterm")),
     Key([mod], "f", lazy.spawn("firefox")),
     Key([mod], "l", lazy.spawn("xlock -mode nose -program fortune")),
+
+    Key([], 'XF86AudioRaiseVolume', lazy.spawn('amixer -q set Speaker 5%+')),
+    Key([], 'XF86AudioLowerVolume', lazy.spawn('amixer -q set Speaker 5%-'))
 ]
 
-music_group = Group('music',
-                     init = False,
-                     persist = False,
-                     matches = [Match(wm_class=['spotify', 'Spotify'])],
-                     spawn = ['xterm -e alsamixer'],
-                     layout = 'stack',
-                     exclusive = True
-              )
-
 work_group = Group('work',
-                    matches = [Match(wm_class=['vmware-view', 'Vmware-view'])],
-                    layout = 'max',
-                    exclusive = True
-              )
+    matches = [Match(wm_class=['vmware-view', 'Vmware-view'])],
+    layout = 'max',
+    exclusive = True
+)
 
 browse_group = Group('browse', 
-                     matches = [Match(wm_class=['navigator', 'Firefox'])],
-                     layout = 'max'
-              )
+    matches = [Match(wm_class=['navigator', 'Firefox'])],
+    layout = 'max'
+)
 
-groups = [Group(i) for i in ['dev', 'browse', 'chat']]
+groups = [Group(i) for i in ['dev', 'chat', 'music']]
         
-groups.append(music_group)
 groups.append(work_group)
 groups.append(browse_group)
 
@@ -114,38 +109,39 @@ widget_defaults = dict(
     padding=3,
 )
 
+screen1_bottom = bar.Bar(
+    [
+        widget.GroupBox(),
+        widget.Sep(),
+        widget.CurrentLayout(),
+        widget.Sep(),
+        widget.Prompt(),
+        widget.Sep(),
+        widget.WindowName(),
+        widget.Sep(),
+        widget.Systray(),
+        widget.Volume(channel = 'Speaker'),
+        widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+    ],
+    32,
+)
+
+screen2_bottom=bar.Bar(
+    [
+        widget.GroupBox(),
+        widget.Sep(),
+        widget.CurrentLayout(),
+        widget.Sep(),
+        widget.WindowName(),
+        widget.Sep(),
+        widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+    ],
+    32,
+)
+
 screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.GroupBox(),
-                widget.Sep(),
-                widget.CurrentLayout(),
-                widget.Sep(),
-                widget.Prompt(),
-                widget.Sep(),
-                widget.WindowName(),
-                widget.Sep(),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-            ],
-            32,
-        ),
-    ),
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.GroupBox(),
-                widget.Sep(),
-                widget.CurrentLayout(),
-                widget.Sep(),
-                widget.WindowName(),
-                widget.Sep(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-            ],
-            32,
-        ),
-    ),
+    Screen(bottom = screen1_bottom),
+    Screen(bottom = screen2_bottom)
 ]
 
 # Drag floating layouts.
@@ -176,4 +172,10 @@ focus_on_window_activation = "smart"
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+# Hooks
+@hook.subscribe.startup_once
+def init():
+    script = home.path.expanduser('~/env/qtile/init.sh')
+    subprocess.call([home])
 
