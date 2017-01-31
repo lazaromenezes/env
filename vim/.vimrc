@@ -100,3 +100,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 " Ctrlp
 let g:ctrlp_custom_ignore = '\v[\/]\.(git)|node_modules$'
 
+" OmniSharp
+let g:OmniSharp_selector_ui = 'ctrlp'
+let g:Omnisharp_start_server = 1
+
