@@ -9,3 +9,7 @@ setlocal omnifunc=OmniSharp#Complete
 set tabstop=4
 set shiftwidth=4
 set makeprg=dotnet\ build
+
+inoremap <F9> <Esc>:make<CR>
+nnoremap <F9> :make<CR>
+
