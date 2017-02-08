@@ -62,6 +62,8 @@ keys = [
     # Program spawn key bindings
     Key([mod], "Return", lazy.spawn("xterm")),
     Key([mod], "f", lazy.spawn("firefox")),
+    Key([mod], "v", lazy.spawn("vmware-view")),
+    Key([mod], "s", lazy.spawn("slack")),
     Key([mod], "l", lazy.spawn("xlock -mode nose -program fortune")),
 
     Key([], 'XF86AudioRaiseVolume', lazy.spawn('amixer -q set Speaker 5%+')),
@@ -79,10 +81,16 @@ browse_group = Group('browse',
     layout = 'max'
 )
 
-groups = [Group(i) for i in ['dev', 'chat', 'music']]
+chat_group = Group('chat', 
+    matches = [Match(wm_class=['slack', 'Slack'])],
+    layout = 'max'
+)
+
+groups = [Group(i) for i in ['dev', 'music']]
         
 groups.append(work_group)
 groups.append(browse_group)
+groups.append(chat_group)
 
 for i in groups:
     # mod1 + letter of group = switch to group
@@ -118,6 +126,7 @@ screen1_bottom = bar.Bar(
         widget.WindowName(),
         widget.Sep(),
         widget.Systray(),
+        widget.Battery(),
         widget.Volume(channel = 'Speaker'),
         widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
     ],
