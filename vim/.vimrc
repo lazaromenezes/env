@@ -38,8 +38,6 @@ set smartindent
 
 " Indentation settings
 set expandtab
-set tabstop=2
-set shiftwidth=2
 
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
@@ -74,7 +72,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
-" Syntastic + Lint
+" Syntastic 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -84,8 +82,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_typescript_checkers = ['tslint']
 
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
@@ -96,11 +92,4 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
-
-" Ctrlp
-let g:ctrlp_custom_ignore = '\v[\/]\.(git)|node_modules$'
-
-" OmniSharp
-let g:OmniSharp_selector_ui = 'ctrlp'
-let g:Omnisharp_start_server = 1
 
