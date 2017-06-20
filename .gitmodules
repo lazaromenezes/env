@@ -1,0 +1,12 @@
+[submodule "ctrlp.vim"]
+	path = vim/.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/.vim/bundle/syntastic"]
+	path = vim/.vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic
+[submodule "vim/.vim/bundle/taboo.vim"]
+	path = vim/.vim/bundle/taboo.vim
+	url = https://github.com/gcmt/taboo.vim
+[submodule "vim/.vim/bundle/typescript-vim"]
+	path = vim/.vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
