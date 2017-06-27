@@ -45,6 +45,7 @@ set ruler
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
+set statusline=%f
 
 " Asks for saving a file instead of failing
 set confirm
