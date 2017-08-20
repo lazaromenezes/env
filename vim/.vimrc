@@ -38,6 +38,8 @@ set smartindent
 
 " Indentation settings
 set expandtab
+set tabstop=2
+set shiftwidth=2
 
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
