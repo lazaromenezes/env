@@ -57,7 +57,7 @@ set confirm
 set cmdheight=2
 
 if &t_Co > 255
-  colorscheme quantum
+  colorscheme monokai
 endif
 
 " Use <F2> to toggle between 'paste' and 'nopaste'

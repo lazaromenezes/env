@@ -1,0 +1,21 @@
+{
+	"name" : "monokai",
+	"background": "#272822",
+	"foreground": "#f1ebeb",
+	"black": "#48483e",
+	"brightBlack": "#dc2566",
+	"red": "#8fc029",
+	"brightRed": "#d4c96e",
+	"green": "#55bcce",
+	"brightGreen": "#9358fe",
+	"yellow": "#56b7a5",
+	"brightYellow": "#acada1",
+	"blue": "#76715e",
+	"brightBlue": "#fa2772",
+	"purple": "#a7e22e",
+	"brightPurple": "#e7db75",
+	"cyan": "#66d9ee",
+	"brightCyan": "#ae82ff",
+	"white": "#66efd5",
+	"brightWhite": "#66efd5"
+}		
