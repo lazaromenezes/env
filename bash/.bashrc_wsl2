@@ -116,7 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add
-fi
+USER_BIN="$HOME/bin"
+ENVROOT="$HOME/dev/env"
+
+PATH="$PATH:$USER_BIN"
+
+source "$ENVROOT/bash/inc/ssh"
+source "$ENVROOT/bash/inc/golang"
+source "$ENVROOT/bash/inc/git"
