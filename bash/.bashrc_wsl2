@@ -124,3 +124,5 @@ PATH="$PATH:$USER_BIN"
 source "$ENVROOT/bash/inc/ssh"
 source "$ENVROOT/bash/inc/golang"
 source "$ENVROOT/bash/inc/git"
+
+EDITOR="vim" 
