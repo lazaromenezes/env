@@ -12,7 +12,7 @@
 	url = https://github.com/leafgarland/typescript-vim
 [submodule "vim/.vim/bundle/omnisharp-vim"]
 	path = vim/.vim/bundle/omnisharp-vim
-	url = git://github.com/OmniSharp/omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim
 [submodule "vim/.vim/bundle/quick-scope"]
 	path = vim/.vim/bundle/quick-scope
 	url = https://github.com/unblevable/quick-scope
