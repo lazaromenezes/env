@@ -16,3 +16,21 @@
 [submodule "vim/.vim/bundle/quick-scope"]
 	path = vim/.vim/bundle/quick-scope
 	url = https://github.com/unblevable/quick-scope
+[submodule "vim/.vim/bundle/asyncomplete"]
+	path = vim/.vim/bundle/asyncomplete
+	url = https://github.com/prabirshrestha/asyncomplete.vim
+[submodule "vim/.vim/bundle/vim-sharpenup"]
+	path = vim/.vim/bundle/vim-sharpenup
+	url = https://github.com/nickspoons/vim-sharpenup
+[submodule "vim/.vim/bundle/fzf"]
+	path = vim/.vim/bundle/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "vim/.vim/bundle/fzf.vim"]
+	path = vim/.vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/.vim/bundle/lightline.vim"]
+	path = vim/.vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/.vim/bundle/lightline-ale"]
+	path = vim/.vim/bundle/lightline-ale
+	url = https://github.com/maximbaz/lightline-ale
