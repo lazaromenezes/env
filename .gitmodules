@@ -34,3 +34,6 @@
 [submodule "vim/.vim/bundle/lightline-ale"]
 	path = vim/.vim/bundle/lightline-ale
 	url = https://github.com/maximbaz/lightline-ale
+[submodule "vim/.vim/bundle/vim-fugitive"]
+	path = vim/.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
