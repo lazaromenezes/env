@@ -1,0 +1,23 @@
+# WSL <-> Windows interop helpers.
+
+# Open Windows Explorer at a path (default: current directory).
+# Pass a file and its folder opens with the file selected.
+explorer() {
+  local target=${1:-.}
+  [[ -e $target ]] || { echo "explorer: no such path: $target" >&2; return 1; }
+
+  local win
+  win=$(wslpath -w "$(realpath "$target")") || return 1
+
+  if [[ -d $target ]]; then
+    explorer.exe "$win"
+  else
+    explorer.exe /select,"$win"
+  fi
+  return 0 # explorer.exe exits 1 even on success
+}
+
+# Print the Windows form of a path (default: current directory).
+winpath() {
+  wslpath -w "$(realpath "${1:-.}")"
+}
